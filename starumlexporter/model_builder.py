@@ -212,15 +212,30 @@ class ModelBuilder:
         target_id: str,
         name: str = "",
         parent_id: str | None = None,
+        *,
+        end2_aggregation: str | None = "shared",
     ) -> dict:
         """创建 UMLAssociation（关联关系）元素.
 
         StarUML 要求 UMLAssociationEnd 的 _parent 指向所属 UMLAssociation，
         否则模型不完整，类往往无法拖到画布上。
+
+        与官方 StarUML 导出的 uml.mdj 一致：字段引用型关联常在 end2（被引用类型端）
+        使用 ``aggregation: \"shared\"``（UML 聚合/引用，空心菱形）。
+        传入 ``end2_aggregation=None`` 表示两端均为普通关联，不画聚合语义。
         """
         assoc_id = generate_id()
         end1_id = generate_id()
         end2_id = generate_id()
+        end2: dict[str, Any] = {
+            "_type": "UMLAssociationEnd",
+            "_id": end2_id,
+            "_parent": {"$ref": assoc_id},
+            "reference": {"$ref": target_id},
+            "multiplicity": "1",
+        }
+        if end2_aggregation:
+            end2["aggregation"] = end2_aggregation
         assoc: dict[str, Any] = {
             "_type": "UMLAssociation",
             "_id": assoc_id,
@@ -232,13 +247,7 @@ class ModelBuilder:
                 "reference": {"$ref": source_id},
                 "multiplicity": "1",
             },
-            "end2": {
-                "_type": "UMLAssociationEnd",
-                "_id": end2_id,
-                "_parent": {"$ref": assoc_id},
-                "reference": {"$ref": target_id},
-                "multiplicity": "1",
-            },
+            "end2": end2,
         }
         if parent_id:
             assoc["_parent"] = {"$ref": parent_id}

@@ -1,28 +1,28 @@
 {
   "_type": "Project",
-  "_id": "AAAAAAFFyaFPjLXlIRsa001=",
+  "_id": "AAAAAAFFgucQHat0G/7o001=",
   "name": "javacode",
   "ownedElements": [
     {
       "_type": "UMLModel",
-      "_id": "AAAAAAFFDNvnyoh5t7GC002=",
+      "_id": "AAAAAAFFlQ9R9egtnQWU002=",
       "name": "Model",
       "ownedElements": [
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFFoj9KBGM51gaa003=",
+          "_id": "AAAAAAFFeXvJFquFipZV003=",
           "name": "AppointmentOffice",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "attributes": [
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFMMo26D+IKC1A004=",
+              "_id": "AAAAAAFFwp35cp/6BBxq004=",
               "name": "orders",
               "visibility": "private",
               "type": "HashMap<LibraryBookIsbn, String>",
@@ -30,12 +30,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFAowcigvCz57H005=",
+              "_id": "AAAAAAFFa1/YVzvG7iQ3005=",
               "name": "toPicks",
               "visibility": "private",
               "type": "HashMap<LibraryBookId, BookDueInfo>",
@@ -43,153 +43,153 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               }
             }
           ],
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFF1d7xdYBy6BWq006=",
+              "_id": "AAAAAAFF71MKVRX90c+S006=",
               "name": "AppointmentOffice",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               },
               "stereotype": "constructor"
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFzq5j0Z6GGnIa007=",
+              "_id": "AAAAAAFFbDWeF3vs5XLG007=",
               "name": "addOrder",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFTot1KQGBfPYd008=",
+                  "_id": "AAAAAAFFWcSkzR+U+fxV008=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFzq5j0Z6GGnIa007="
+                    "$ref": "AAAAAAFFbDWeF3vs5XLG007="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFFKAv+p64md+v009=",
+                  "_id": "AAAAAAFFTk6qcjrH6DJy009=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFzq5j0Z6GGnIa007="
+                    "$ref": "AAAAAAFFbDWeF3vs5XLG007="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFF4k1FlVu2ZfUB010=",
+              "_id": "AAAAAAFFFE86pAQ1I+r2010=",
               "name": "removeOrder",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFF4NkeihLDBIx011=",
+                  "_id": "AAAAAAFFbNgYehnvVQ2m011=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFF4k1FlVu2ZfUB010="
+                    "$ref": "AAAAAAFFFE86pAQ1I+r2010="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFwfvUXTZT//XG012=",
+              "_id": "AAAAAAFFvkRUTVqvaCcW012=",
               "name": "addToPick",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFVZ/kWCXHkZYx013=",
+                  "_id": "AAAAAAFFuame2fraNoyF013=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFwfvUXTZT//XG012="
+                    "$ref": "AAAAAAFFvkRUTVqvaCcW012="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFMwcFDo/zwi4G014=",
+                  "_id": "AAAAAAFF37HhECre49YI014=",
                   "name": "date",
                   "type": "LocalDate",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFwfvUXTZT//XG012="
+                    "$ref": "AAAAAAFFvkRUTVqvaCcW012="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFu88u1VGaVAjr015=",
+                  "_id": "AAAAAAFFUACfKVGwPoLn015=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFwfvUXTZT//XG012="
+                    "$ref": "AAAAAAFFvkRUTVqvaCcW012="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFIoBCw+FvCscV016=",
+              "_id": "AAAAAAFFy0t9aYyIQB4T016=",
               "name": "removeToPick",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF9yK/JprAAjlM017=",
+                  "_id": "AAAAAAFFTgpex1M9d77n017=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFIoBCw+FvCscV016="
+                    "$ref": "AAAAAAFFy0t9aYyIQB4T016="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFhoN83ODzdeQP018=",
+              "_id": "AAAAAAFFBwbrA6qYReNX018=",
               "name": "getBookId",
               "visibility": "public",
               "isStatic": false,
@@ -197,34 +197,34 @@
               "isFinal": false,
               "type": "LibraryBookId",
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFT1HpAyr3ZSYx019=",
+                  "_id": "AAAAAAFFrARaULGMmopz019=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFhoN83ODzdeQP018="
+                    "$ref": "AAAAAAFFBwbrA6qYReNX018="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFnVkBbFYzS3lR020=",
+                  "_id": "AAAAAAFFOdbV1IQwvy88020=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFhoN83ODzdeQP018="
+                    "$ref": "AAAAAAFFBwbrA6qYReNX018="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFyQ2vx29mRHY+021=",
+              "_id": "AAAAAAFFB2vMlZvT+AAA021=",
               "name": "getOrderList",
               "visibility": "public",
               "isStatic": false,
@@ -232,12 +232,12 @@
               "isFinal": false,
               "type": "HashMap<LibraryBookIsbn, String>",
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFZEJAv5HKlPyd022=",
+              "_id": "AAAAAAFFrIdLbhjG6GO0022=",
               "name": "getToPickList",
               "visibility": "public",
               "isStatic": false,
@@ -245,58 +245,59 @@
               "isFinal": false,
               "type": "HashMap<LibraryBookId, BookDueInfo>",
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               }
             }
           ],
           "ownedElements": [
             {
               "_type": "UMLAssociation",
-              "_id": "AAAAAAFFq6yLrMD6YKPw115=",
+              "_id": "AAAAAAFFM4v42BS5twBO147=",
               "name": "",
               "end1": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFXXiOEEFWN/Cn116=",
+                "_id": "AAAAAAFFzKJpoC0EWa8B148=",
                 "_parent": {
-                  "$ref": "AAAAAAFFq6yLrMD6YKPw115="
+                  "$ref": "AAAAAAFFM4v42BS5twBO147="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                  "$ref": "AAAAAAFFeXvJFquFipZV003="
                 },
                 "multiplicity": "1"
               },
               "end2": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFPEiRPE7aN/6V117=",
+                "_id": "AAAAAAFFUn2HUSUUhd3s149=",
                 "_parent": {
-                  "$ref": "AAAAAAFFq6yLrMD6YKPw115="
+                  "$ref": "AAAAAAFFM4v42BS5twBO147="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFF7YC1EX72IOoh035="
+                  "$ref": "AAAAAAFF1jTMyAnhnfGI035="
                 },
-                "multiplicity": "1"
+                "multiplicity": "1",
+                "aggregation": "shared"
               },
               "_parent": {
-                "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                "$ref": "AAAAAAFFeXvJFquFipZV003="
               }
             }
           ]
         },
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFFNfJv3heNs7L8023=",
+          "_id": "AAAAAAFFq14g/R+26qmT023=",
           "name": "Book",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "attributes": [
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFu04EOjixvWZ8024=",
+              "_id": "AAAAAAFF0HT/NiA8jU5m024=",
               "name": "isbnId",
               "visibility": "private",
               "type": "String",
@@ -304,12 +305,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                "$ref": "AAAAAAFFq14g/R+26qmT023="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFTQFEn0SyEI0K025=",
+              "_id": "AAAAAAFFAX2rsFlJGGoo025=",
               "name": "uuid",
               "visibility": "private",
               "type": "String",
@@ -317,12 +318,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                "$ref": "AAAAAAFFq14g/R+26qmT023="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFltPoUJj2D7JT026=",
+              "_id": "AAAAAAFFoJGvRwd/mky/026=",
               "name": "type",
               "visibility": "private",
               "type": "Type",
@@ -330,12 +331,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                "$ref": "AAAAAAFFq14g/R+26qmT023="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFDOaKOc8vG21D027=",
+              "_id": "AAAAAAFFGP97YCXEz7uq027=",
               "name": "movetraceList",
               "visibility": "private",
               "type": "ArrayList<LibraryTrace>",
@@ -343,83 +344,83 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                "$ref": "AAAAAAFFq14g/R+26qmT023="
               }
             }
           ],
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFbdhojqtDcLxE028=",
+              "_id": "AAAAAAFFnExIqfMLMD3q028=",
               "name": "Book",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                "$ref": "AAAAAAFFq14g/R+26qmT023="
               },
               "stereotype": "constructor",
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF+i9lcqnFgIpC029=",
+                  "_id": "AAAAAAFFcFutM2OlvzyI029=",
                   "name": "isbnId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFbdhojqtDcLxE028="
+                    "$ref": "AAAAAAFFnExIqfMLMD3q028="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFHmuBsHBK3BnY030=",
+                  "_id": "AAAAAAFFqIPbXbDy1fd6030=",
                   "name": "uuid",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFbdhojqtDcLxE028="
+                    "$ref": "AAAAAAFFnExIqfMLMD3q028="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFKJ2JR6PJu04O031=",
+                  "_id": "AAAAAAFFh+nyLyz2PkpR031=",
                   "name": "type",
                   "type": "Type",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFbdhojqtDcLxE028="
+                    "$ref": "AAAAAAFFnExIqfMLMD3q028="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFTtYbTXzkkduw032=",
+              "_id": "AAAAAAFF/sa2EUvrSJCh032=",
               "name": "addMoveInfo",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                "$ref": "AAAAAAFFq14g/R+26qmT023="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFUtrF08mmLhoF033=",
+                  "_id": "AAAAAAFFJ8NhLWyKWMxV033=",
                   "name": "movetrace",
                   "type": "LibraryTrace",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFTtYbTXzkkduw032="
+                    "$ref": "AAAAAAFF/sa2EUvrSJCh032="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFxOxrZMhFvRb1034=",
+              "_id": "AAAAAAFFc8rQNe02EpQG034=",
               "name": "getMoveInfoList",
               "visibility": "public",
               "isStatic": false,
@@ -427,26 +428,26 @@
               "isFinal": false,
               "type": "ArrayList<LibraryTrace>",
               "_parent": {
-                "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                "$ref": "AAAAAAFFq14g/R+26qmT023="
               }
             }
           ]
         },
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFF7YC1EX72IOoh035=",
+          "_id": "AAAAAAFF1jTMyAnhnfGI035=",
           "name": "BookDueInfo",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "attributes": [
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFX+CDBJolHrFQ036=",
+              "_id": "AAAAAAFFB+F7lwZjhWD1036=",
               "name": "startDate",
               "visibility": "private",
               "type": "LocalDate",
@@ -454,12 +455,12 @@
               "isFinal": true,
               "isReadOnly": true,
               "_parent": {
-                "$ref": "AAAAAAFF7YC1EX72IOoh035="
+                "$ref": "AAAAAAFF1jTMyAnhnfGI035="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFNiS3Qjyb5aCO037=",
+              "_id": "AAAAAAFF3boaxoxmDzUD037=",
               "name": "studentId",
               "visibility": "private",
               "type": "String",
@@ -467,49 +468,49 @@
               "isFinal": true,
               "isReadOnly": true,
               "_parent": {
-                "$ref": "AAAAAAFF7YC1EX72IOoh035="
+                "$ref": "AAAAAAFF1jTMyAnhnfGI035="
               }
             }
           ],
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFcuy7taQsez/v038=",
+              "_id": "AAAAAAFFlZi2VgXuKvMC038=",
               "name": "BookDueInfo",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFF7YC1EX72IOoh035="
+                "$ref": "AAAAAAFF1jTMyAnhnfGI035="
               },
               "stereotype": "constructor",
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFCjxgeXfQT+hX039=",
+                  "_id": "AAAAAAFFdl32Hz/bpOSg039=",
                   "name": "dueDate",
                   "type": "LocalDate",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFcuy7taQsez/v038="
+                    "$ref": "AAAAAAFFlZi2VgXuKvMC038="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFqriWWeX79kcF040=",
+                  "_id": "AAAAAAFFBrOgfPdXZ/z5040=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFcuy7taQsez/v038="
+                    "$ref": "AAAAAAFFlZi2VgXuKvMC038="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFBWGw4i9Ess7n041=",
+              "_id": "AAAAAAFF+I+JahQoWHzi041=",
               "name": "getDueDate",
               "visibility": "public",
               "isStatic": false,
@@ -517,12 +518,12 @@
               "isFinal": false,
               "type": "LocalDate",
               "_parent": {
-                "$ref": "AAAAAAFF7YC1EX72IOoh035="
+                "$ref": "AAAAAAFF1jTMyAnhnfGI035="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFF7CbVWN816EiX042=",
+              "_id": "AAAAAAFFcqlaoKq5XUzW042=",
               "name": "getStudentId",
               "visibility": "public",
               "isStatic": false,
@@ -530,26 +531,26 @@
               "isFinal": false,
               "type": "String",
               "_parent": {
-                "$ref": "AAAAAAFF7YC1EX72IOoh035="
+                "$ref": "AAAAAAFF1jTMyAnhnfGI035="
               }
             }
           ]
         },
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFFICiSG+HNa04p043=",
+          "_id": "AAAAAAFF7mXoN7fbRsHY043=",
           "name": "Bookshelf",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "attributes": [
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFIJApZpqKZPuK044=",
+              "_id": "AAAAAAFF+nutQG81U8uD044=",
               "name": "bookIsbns",
               "visibility": "private",
               "type": "HashMap<LibraryBookIsbn, Integer>",
@@ -557,12 +558,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFqaTPXMy4qeRi045=",
+              "_id": "AAAAAAFF31ao5UG86vMe045=",
               "name": "books",
               "visibility": "private",
               "type": "HashSet<LibraryBookId>",
@@ -570,39 +571,52 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               }
             }
           ],
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFkOnGz9AIneDF046=",
+              "_id": "AAAAAAFFJ9dPy898L38k046=",
               "name": "Bookshelf",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
+              },
+              "stereotype": "constructor"
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFoQZXKKNPir9F047=",
+              "name": "Bookshelf",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               },
               "stereotype": "constructor",
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF+Fcgs1Pqi+u0047=",
+                  "_id": "AAAAAAFFetSRs49MtK31048=",
                   "name": "bookList",
                   "type": "Map<LibraryBookIsbn, Integer>",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFkOnGz9AIneDF046="
+                    "$ref": "AAAAAAFFoQZXKKNPir9F047="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFKeWtzzwoPCys048=",
+              "_id": "AAAAAAFFDFAiiM37+5nP049=",
               "name": "hasBook",
               "visibility": "public",
               "isStatic": false,
@@ -610,24 +624,24 @@
               "isFinal": false,
               "type": "boolean",
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFCIbuSEXzUY2S049=",
+                  "_id": "AAAAAAFF1RGJ6o6bhYFX050=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFKeWtzzwoPCys048="
+                    "$ref": "AAAAAAFFDFAiiM37+5nP049="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFXjrW+uhTbFuq050=",
+              "_id": "AAAAAAFFQtMmTjrmOmNw051=",
               "name": "getOneBook",
               "visibility": "public",
               "isStatic": false,
@@ -635,72 +649,72 @@
               "isFinal": false,
               "type": "LibraryBookId",
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFTWlPt3w0vG1C051=",
+                  "_id": "AAAAAAFFv492DKL1jQdV052=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFXjrW+uhTbFuq050="
+                    "$ref": "AAAAAAFFQtMmTjrmOmNw051="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFSFu0pGasMisV052=",
+              "_id": "AAAAAAFFWXUw6xqSbz3l053=",
               "name": "addBook",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFNnG+Uo4Umnvi053=",
+                  "_id": "AAAAAAFFJ472Chm5YQXM054=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFSFu0pGasMisV052="
+                    "$ref": "AAAAAAFFWXUw6xqSbz3l053="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFF5Ej71ELfrgRD054=",
+              "_id": "AAAAAAFFdsDsJJ2pEJBW055=",
               "name": "removeBook",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFNd+2BImL54zA055=",
+                  "_id": "AAAAAAFFUuLQvrhJt6sk056=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFF5Ej71ELfrgRD054="
+                    "$ref": "AAAAAAFFdsDsJJ2pEJBW055="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFhIw0grxwG15N056=",
+              "_id": "AAAAAAFFcvf9IMAzEOfW057=",
               "name": "getBooks",
               "visibility": "public",
               "isStatic": false,
@@ -708,26 +722,26 @@
               "isFinal": false,
               "type": "HashSet<LibraryBookId>",
               "_parent": {
-                "$ref": "AAAAAAFFICiSG+HNa04p043="
+                "$ref": "AAAAAAFF7mXoN7fbRsHY043="
               }
             }
           ]
         },
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFFyKoCsDtIEFez057=",
+          "_id": "AAAAAAFFbleUO5ABG+BS058=",
           "name": "BorrowAndReturnOffice",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "attributes": [
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFjPc+KGE8sdxo058=",
+              "_id": "AAAAAAFFtC0Qc69l4pid059=",
               "name": "returnList",
               "visibility": "private",
               "type": "HashSet<LibraryBookId>",
@@ -735,63 +749,63 @@
               "isFinal": true,
               "isReadOnly": true,
               "_parent": {
-                "$ref": "AAAAAAFFyKoCsDtIEFez057="
+                "$ref": "AAAAAAFFbleUO5ABG+BS058="
               }
             }
           ],
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFrVEV4P0ERzXk059=",
+              "_id": "AAAAAAFFBztTjrys0xxV060=",
               "name": "BorrowAndReturnOffice",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFyKoCsDtIEFez057="
+                "$ref": "AAAAAAFFbleUO5ABG+BS058="
               },
               "stereotype": "constructor"
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFyBsZrGj46ShZ060=",
+              "_id": "AAAAAAFFrxT1cZqz+KXl061=",
               "name": "addBook",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFyKoCsDtIEFez057="
+                "$ref": "AAAAAAFFbleUO5ABG+BS058="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF/DZRHSeDJaXX061=",
+                  "_id": "AAAAAAFF5IFVPHy6I6N8062=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFyBsZrGj46ShZ060="
+                    "$ref": "AAAAAAFFrxT1cZqz+KXl061="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFvB1ieAs164pB062=",
+              "_id": "AAAAAAFFNypnkiEmDIFH063=",
               "name": "clearReturnList",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFyKoCsDtIEFez057="
+                "$ref": "AAAAAAFFbleUO5ABG+BS058="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFu9RwyaKyLOjh063=",
+              "_id": "AAAAAAFFDFfnAk+1c3Yu064=",
               "name": "getList",
               "visibility": "public",
               "isStatic": false,
@@ -799,39 +813,52 @@
               "isFinal": false,
               "type": "ArrayList<LibraryBookId>",
               "_parent": {
-                "$ref": "AAAAAAFFyKoCsDtIEFez057="
+                "$ref": "AAAAAAFFbleUO5ABG+BS058="
               }
             }
           ]
         },
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFFfb5T0ot9jhOQ064=",
+          "_id": "AAAAAAFFVY9OUCjBZbYc065=",
           "name": "Library",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "attributes": [
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFj1CYzvIfJeRz065=",
-              "name": "bookshelf",
+              "_id": "AAAAAAFFMarBtHDOF3Ey066=",
+              "name": "normalBookshelf",
               "visibility": "private",
               "type": "Bookshelf",
               "isStatic": false,
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFK99LPgXmyJWm066=",
+              "_id": "AAAAAAFFYDN+r8B/PA7T067=",
+              "name": "popularBookshelf",
+              "visibility": "private",
+              "type": "Bookshelf",
+              "isStatic": false,
+              "isFinal": false,
+              "isReadOnly": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              }
+            },
+            {
+              "_type": "UMLAttribute",
+              "_id": "AAAAAAFFhnUEYDCl9Iv6068=",
               "name": "borrowAndReturnOffice",
               "visibility": "private",
               "type": "BorrowAndReturnOffice",
@@ -839,12 +866,12 @@
               "isFinal": true,
               "isReadOnly": true,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFcavi3+TQhsWf067=",
+              "_id": "AAAAAAFF86EOfx9VeElD069=",
               "name": "appointmentOffice",
               "visibility": "private",
               "type": "AppointmentOffice",
@@ -852,12 +879,25 @@
               "isFinal": true,
               "isReadOnly": true,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFLu6FJqKY7SyY068=",
+              "_id": "AAAAAAFFdCmRdTF0F0G2070=",
+              "name": "readingRoom",
+              "visibility": "private",
+              "type": "ReadingRoom",
+              "isStatic": false,
+              "isFinal": true,
+              "isReadOnly": true,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              }
+            },
+            {
+              "_type": "UMLAttribute",
+              "_id": "AAAAAAFFyFMdqZqjskgk071=",
               "name": "allBooks",
               "visibility": "private",
               "type": "HashMap<LibraryBookId, Book>",
@@ -865,12 +905,12 @@
               "isFinal": true,
               "isReadOnly": true,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFZ72jImknc4Zj069=",
+              "_id": "AAAAAAFF5eh1vbDOPcMt072=",
               "name": "students",
               "visibility": "private",
               "type": "HashMap<String, User>",
@@ -878,12 +918,25 @@
               "isFinal": true,
               "isReadOnly": true,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFuJKIFXu86mKS070=",
+              "_id": "AAAAAAFF7ndx3THqtdGL073=",
+              "name": "booklastDates",
+              "visibility": "private",
+              "type": "HashMap<LibraryBookIsbn, LocalDate>",
+              "isStatic": false,
+              "isFinal": false,
+              "isReadOnly": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              }
+            },
+            {
+              "_type": "UMLAttribute",
+              "_id": "AAAAAAFFZzr89lHts+AV074=",
               "name": "today",
               "visibility": "private",
               "type": "LocalDate",
@@ -891,276 +944,449 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              }
+            },
+            {
+              "_type": "UMLAttribute",
+              "_id": "AAAAAAFFQE/ZGimgdrI6075=",
+              "name": "lastDate",
+              "visibility": "private",
+              "type": "LocalDate",
+              "isStatic": false,
+              "isFinal": false,
+              "isReadOnly": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             }
           ],
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFyV+c2oQ20Ckw071=",
+              "_id": "AAAAAAFFrIYVwUlbli7v076=",
               "name": "Library",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "stereotype": "constructor"
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFjgeloc/YN0UB072=",
+              "_id": "AAAAAAFF6kBLSClpdOrN077=",
               "name": "run",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFF/G162aXQWWYa073=",
+              "_id": "AAAAAAFF+9hqL6DKdyYi078=",
               "name": "open",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFRXrRUU8P95YS074=",
+              "_id": "AAAAAAFFnM+qr+pL89EY079=",
+              "name": "movePopularBooks",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFY6O8HLCGQ1Fo080=",
+                  "name": "moveInfos",
+                  "type": "ArrayList<LibraryMoveInfo>",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFnM+qr+pL89EY079="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFI9TGFfs77LT9081=",
+              "name": "clearReadingRoom",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFF8hKLuAe8ih8R082=",
+                  "name": "moveInfos",
+                  "type": "ArrayList<LibraryMoveInfo>",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFI9TGFfs77LT9081="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFhG3iD0BQfiBx083=",
               "name": "close",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFh9xoIgLRNaZo075=",
+              "_id": "AAAAAAFFK2hIcYpbz06x084=",
+              "name": "moveOrders",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFF3oIvtSQZKkkO085=",
+                  "name": "moveInfos",
+                  "type": "ArrayList<LibraryMoveInfo>",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFK2hIcYpbz06x084="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFHTkGLFIndAUN086=",
               "name": "borrowed",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFXW6U3yZj34aj076=",
+                  "_id": "AAAAAAFFoNG8350iPBoM087=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFh9xoIgLRNaZo075="
+                    "$ref": "AAAAAAFFHTkGLFIndAUN086="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFND59OzKljfLf077=",
+                  "_id": "AAAAAAFF/rz3FdgBNAYE088=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFh9xoIgLRNaZo075="
+                    "$ref": "AAAAAAFFHTkGLFIndAUN086="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF4H5tWDzr/kR+078=",
+                  "_id": "AAAAAAFF9+SEFQodCXfk089=",
                   "name": "command",
                   "type": "LibraryCommand",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFh9xoIgLRNaZo075="
+                    "$ref": "AAAAAAFFHTkGLFIndAUN086="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFy74cuwACaQ9j079=",
+              "_id": "AAAAAAFFbcpHygmblbZl090=",
               "name": "returned",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFQTFnh8FgQg7x080=",
+                  "_id": "AAAAAAFFdO+87fGcXAWF091=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFy74cuwACaQ9j079="
+                    "$ref": "AAAAAAFFbcpHygmblbZl090="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFDs9gWRfoKbu8081=",
+                  "_id": "AAAAAAFFJbOrmWTIXTkm092=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFy74cuwACaQ9j079="
+                    "$ref": "AAAAAAFFbcpHygmblbZl090="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF/n8qRLxZYaN2082=",
+                  "_id": "AAAAAAFFSbO3g7w8JkwK093=",
                   "name": "command",
                   "type": "LibraryCommand",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFy74cuwACaQ9j079="
+                    "$ref": "AAAAAAFFbcpHygmblbZl090="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFEIvZQxHxFFi8083=",
+              "_id": "AAAAAAFF87DK9sOfnZHa094=",
               "name": "picked",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF/J62VGiwLaXF084=",
+                  "_id": "AAAAAAFFvWWieAn+eWpd095=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFEIvZQxHxFFi8083="
+                    "$ref": "AAAAAAFF87DK9sOfnZHa094="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFOByZ/AJOUTJ1085=",
+                  "_id": "AAAAAAFFQBZBMfXuwmxY096=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFEIvZQxHxFFi8083="
+                    "$ref": "AAAAAAFF87DK9sOfnZHa094="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFhVdawBq03eeM086=",
+                  "_id": "AAAAAAFFRQWtG5PUgxg6097=",
                   "name": "command",
                   "type": "LibraryCommand",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFEIvZQxHxFFi8083="
+                    "$ref": "AAAAAAFF87DK9sOfnZHa094="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFgF5xZm4eK198087=",
+              "_id": "AAAAAAFFvy2dwUKCqcrZ098=",
               "name": "ordered",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFxh7umYZue1hO088=",
+                  "_id": "AAAAAAFFKZJzZfEAqQh1099=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFgF5xZm4eK198087="
+                    "$ref": "AAAAAAFFvy2dwUKCqcrZ098="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFBQIFwdqDGdh9089=",
+                  "_id": "AAAAAAFF63/enIDBzmLG100=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFgF5xZm4eK198087="
+                    "$ref": "AAAAAAFFvy2dwUKCqcrZ098="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFYknqd/CBGpKa090=",
+                  "_id": "AAAAAAFF1RQl0UFvXaBL101=",
                   "name": "command",
                   "type": "LibraryCommand",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFgF5xZm4eK198087="
+                    "$ref": "AAAAAAFFvy2dwUKCqcrZ098="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFhjWZfilhjyT1091=",
+              "_id": "AAAAAAFFJz8UKBGDSTAo102=",
               "name": "queried",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF7/nP9JXIi7Po092=",
+                  "_id": "AAAAAAFFM3JmQgCKSoK8103=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFhjWZfilhjyT1091="
+                    "$ref": "AAAAAAFFJz8UKBGDSTAo102="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF8m2tqiIAyoGc093=",
+                  "_id": "AAAAAAFFNe/kir9R0LQP104=",
                   "name": "studentId",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFhjWZfilhjyT1091="
+                    "$ref": "AAAAAAFFJz8UKBGDSTAo102="
                   }
                 },
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFCAtto6FwPnrU094=",
+                  "_id": "AAAAAAFFEETVoaPtDkVN105=",
                   "name": "command",
                   "type": "LibraryCommand",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFhjWZfilhjyT1091="
+                    "$ref": "AAAAAAFFJz8UKBGDSTAo102="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFUPPY3eU0U+8P106=",
+              "name": "read",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFGC7i7fvlL6W1107=",
+                  "name": "bookIsbn",
+                  "type": "LibraryBookIsbn",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFUPPY3eU0U+8P106="
+                  }
+                },
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFXxgZeVY0Iwn/108=",
+                  "name": "studentId",
+                  "type": "String",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFUPPY3eU0U+8P106="
+                  }
+                },
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFCBF4RktcvOrE109=",
+                  "name": "command",
+                  "type": "LibraryCommand",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFUPPY3eU0U+8P106="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFiq0bjDE/PSE8110=",
+              "name": "restored",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFjfRkVxOmcY46111=",
+                  "name": "bookId",
+                  "type": "LibraryBookId",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFiq0bjDE/PSE8110="
+                  }
+                },
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFDvXoLoLFS3dt112=",
+                  "name": "studentId",
+                  "type": "String",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFiq0bjDE/PSE8110="
+                  }
+                },
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFU9iRcm/rD2zh113=",
+                  "name": "command",
+                  "type": "LibraryCommand",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFiq0bjDE/PSE8110="
                   }
                 }
               ]
@@ -1169,202 +1395,238 @@
           "ownedElements": [
             {
               "_type": "UMLAssociation",
-              "_id": "AAAAAAFFvoeJEfcoiPEt118=",
+              "_id": "AAAAAAFFh4ZjVxauVX6l150=",
               "name": "",
               "end1": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFoiOUlzJVXMch119=",
+                "_id": "AAAAAAFFUP7/FzYhrkKO151=",
                 "_parent": {
-                  "$ref": "AAAAAAFFvoeJEfcoiPEt118="
+                  "$ref": "AAAAAAFFh4ZjVxauVX6l150="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                  "$ref": "AAAAAAFFVY9OUCjBZbYc065="
                 },
                 "multiplicity": "1"
               },
               "end2": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFx9nK7f83Pxuh120=",
+                "_id": "AAAAAAFFVCI0jPml8I1f152=",
                 "_parent": {
-                  "$ref": "AAAAAAFFvoeJEfcoiPEt118="
+                  "$ref": "AAAAAAFFh4ZjVxauVX6l150="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFyKoCsDtIEFez057="
+                  "$ref": "AAAAAAFFTOYVMQqUIzMD117="
                 },
-                "multiplicity": "1"
+                "multiplicity": "1",
+                "aggregation": "shared"
               },
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAssociation",
-              "_id": "AAAAAAFFFL4VpFFQM2za121=",
+              "_id": "AAAAAAFF6DQxRP2aZgGh153=",
               "name": "",
               "end1": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFMx+jLOxz133D122=",
+                "_id": "AAAAAAFF7qoIO+4JTL8H154=",
                 "_parent": {
-                  "$ref": "AAAAAAFFFL4VpFFQM2za121="
+                  "$ref": "AAAAAAFF6DQxRP2aZgGh153="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                  "$ref": "AAAAAAFFVY9OUCjBZbYc065="
                 },
                 "multiplicity": "1"
               },
               "end2": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFlxK82f1itAt2123=",
+                "_id": "AAAAAAFF9rC4b5zUNvvj155=",
                 "_parent": {
-                  "$ref": "AAAAAAFFFL4VpFFQM2za121="
+                  "$ref": "AAAAAAFF6DQxRP2aZgGh153="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFoj9KBGM51gaa003="
+                  "$ref": "AAAAAAFFeXvJFquFipZV003="
                 },
-                "multiplicity": "1"
+                "multiplicity": "1",
+                "aggregation": "shared"
               },
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAssociation",
-              "_id": "AAAAAAFFyNCAnWPiwpd3124=",
+              "_id": "AAAAAAFFw6Tan/xVMv2C156=",
               "name": "",
               "end1": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFFQ7FOot8kNnh125=",
+                "_id": "AAAAAAFFw9Wj5WVNO8Uj157=",
                 "_parent": {
-                  "$ref": "AAAAAAFFyNCAnWPiwpd3124="
+                  "$ref": "AAAAAAFFw6Tan/xVMv2C156="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                  "$ref": "AAAAAAFFVY9OUCjBZbYc065="
                 },
                 "multiplicity": "1"
               },
               "end2": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFNMPwQtYZSgsb126=",
+                "_id": "AAAAAAFF0+A66p7QX397158=",
                 "_parent": {
-                  "$ref": "AAAAAAFFyNCAnWPiwpd3124="
+                  "$ref": "AAAAAAFFw6Tan/xVMv2C156="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFICiSG+HNa04p043="
+                  "$ref": "AAAAAAFFK8TbjgKwKQsm126="
                 },
-                "multiplicity": "1"
+                "multiplicity": "1",
+                "aggregation": "shared"
               },
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAssociation",
-              "_id": "AAAAAAFFFncDRFspOf85127=",
+              "_id": "AAAAAAFFBq3hs4bUtlxx159=",
               "name": "",
               "end1": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFKipdtLs8jVnE128=",
+                "_id": "AAAAAAFFUodo29p8ylem160=",
                 "_parent": {
-                  "$ref": "AAAAAAFFFncDRFspOf85127="
+                  "$ref": "AAAAAAFFBq3hs4bUtlxx159="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                  "$ref": "AAAAAAFFVY9OUCjBZbYc065="
                 },
                 "multiplicity": "1"
               },
               "end2": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFiLv2DE9JfBbr129=",
+                "_id": "AAAAAAFF6DmwnPICShlr161=",
                 "_parent": {
-                  "$ref": "AAAAAAFFFncDRFspOf85127="
+                  "$ref": "AAAAAAFFBq3hs4bUtlxx159="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                  "$ref": "AAAAAAFFq14g/R+26qmT023="
                 },
-                "multiplicity": "1"
+                "multiplicity": "1",
+                "aggregation": "shared"
               },
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLAssociation",
-              "_id": "AAAAAAFF8dZNzbydiYtj130=",
+              "_id": "AAAAAAFF090njH5j9VNR162=",
               "name": "",
               "end1": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFGq8U/UHq16EG131=",
+                "_id": "AAAAAAFFQwzklIXreoR0163=",
                 "_parent": {
-                  "$ref": "AAAAAAFF8dZNzbydiYtj130="
+                  "$ref": "AAAAAAFF090njH5j9VNR162="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                  "$ref": "AAAAAAFFVY9OUCjBZbYc065="
                 },
                 "multiplicity": "1"
               },
               "end2": {
                 "_type": "UMLAssociationEnd",
-                "_id": "AAAAAAFFiPGUOlgh25cm132=",
+                "_id": "AAAAAAFFsHyXgZ8hGZ2o164=",
                 "_parent": {
-                  "$ref": "AAAAAAFF8dZNzbydiYtj130="
+                  "$ref": "AAAAAAFF090njH5j9VNR162="
                 },
                 "reference": {
-                  "$ref": "AAAAAAFFNfJv3heNs7L8023="
+                  "$ref": "AAAAAAFF7mXoN7fbRsHY043="
+                },
+                "multiplicity": "1",
+                "aggregation": "shared"
+              },
+              "_parent": {
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "AAAAAAFFfaU7NtN9Lk16165=",
+              "name": "",
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "AAAAAAFF/COaDXaANbso166=",
+                "_parent": {
+                  "$ref": "AAAAAAFFfaU7NtN9Lk16165="
+                },
+                "reference": {
+                  "$ref": "AAAAAAFFVY9OUCjBZbYc065="
                 },
                 "multiplicity": "1"
               },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "AAAAAAFFDB3JBokMSCUR167=",
+                "_parent": {
+                  "$ref": "AAAAAAFFfaU7NtN9Lk16165="
+                },
+                "reference": {
+                  "$ref": "AAAAAAFFbleUO5ABG+BS058="
+                },
+                "multiplicity": "1",
+                "aggregation": "shared"
+              },
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             },
             {
               "_type": "UMLDependency",
-              "_id": "AAAAAAFFApjXYCJno3Lu133=",
+              "_id": "AAAAAAFFFRO5lBe2txp4168=",
               "source": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "target": {
-                "$ref": "AAAAAAFF7YC1EX72IOoh035="
+                "$ref": "AAAAAAFF1jTMyAnhnfGI035="
               },
               "name": "",
               "_parent": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               }
             }
           ]
         },
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFFz0yW4O3ugzTx095=",
+          "_id": "AAAAAAFF5ULPEFO9p8iK114=",
           "name": "MainClass",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFF8qXsy33Jq8an096=",
+              "_id": "AAAAAAFFdLEN3Hww3tWo115=",
               "name": "main",
               "visibility": "public",
               "isStatic": true,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFz0yW4O3ugzTx095="
+                "$ref": "AAAAAAFF5ULPEFO9p8iK114="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFF0nz4udvMWry+097=",
+                  "_id": "AAAAAAFFOjF1krLIkwLn116=",
                   "name": "args",
                   "type": "String[]",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFF8qXsy33Jq8an096="
+                    "$ref": "AAAAAAFFdLEN3Hww3tWo115="
                   }
                 }
               ]
@@ -1373,35 +1635,150 @@
           "ownedElements": [
             {
               "_type": "UMLDependency",
-              "_id": "AAAAAAFFpx1O9N3YIVfa134=",
+              "_id": "AAAAAAFFsIWnigjiqjpA169=",
               "source": {
-                "$ref": "AAAAAAFFz0yW4O3ugzTx095="
+                "$ref": "AAAAAAFF5ULPEFO9p8iK114="
               },
               "target": {
-                "$ref": "AAAAAAFFfb5T0ot9jhOQ064="
+                "$ref": "AAAAAAFFVY9OUCjBZbYc065="
               },
               "name": "",
               "_parent": {
-                "$ref": "AAAAAAFFz0yW4O3ugzTx095="
+                "$ref": "AAAAAAFF5ULPEFO9p8iK114="
               }
             }
           ]
         },
         {
           "_type": "UMLClass",
-          "_id": "AAAAAAFFOtzR9/de1FzD098=",
+          "_id": "AAAAAAFFTOYVMQqUIzMD117=",
+          "name": "ReadingRoom",
+          "visibility": "public",
+          "isAbstract": false,
+          "isFinal": false,
+          "isLeaf": false,
+          "_parent": {
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
+          },
+          "attributes": [
+            {
+              "_type": "UMLAttribute",
+              "_id": "AAAAAAFFgB5iaGcsGa75118=",
+              "name": "readingList",
+              "visibility": "private",
+              "type": "HashSet<LibraryBookId>",
+              "isStatic": false,
+              "isFinal": false,
+              "isReadOnly": false,
+              "_parent": {
+                "$ref": "AAAAAAFFTOYVMQqUIzMD117="
+              }
+            }
+          ],
+          "operations": [
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFN1/7SjrNxqlm119=",
+              "name": "ReadingRoom",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFTOYVMQqUIzMD117="
+              },
+              "stereotype": "constructor"
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFpztDmfehCNd5120=",
+              "name": "addBook",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFTOYVMQqUIzMD117="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFavS09pT4S/yR121=",
+                  "name": "bookId",
+                  "type": "LibraryBookId",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFpztDmfehCNd5120="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFiXW/kd9GpROi122=",
+              "name": "removeBook",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFTOYVMQqUIzMD117="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFvpXj0OTXzcb5123=",
+                  "name": "bookId",
+                  "type": "LibraryBookId",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFiXW/kd9GpROi122="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFXWVimQUmto+Y124=",
+              "name": "getBooks",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "type": "HashSet<LibraryBookId>",
+              "_parent": {
+                "$ref": "AAAAAAFFTOYVMQqUIzMD117="
+              }
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFF3lLf7HKPZ5pK125=",
+              "name": "clearBooks",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFTOYVMQqUIzMD117="
+              }
+            }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "AAAAAAFFK8TbjgKwKQsm126=",
           "name": "User",
           "visibility": "public",
           "isAbstract": false,
           "isFinal": false,
           "isLeaf": false,
           "_parent": {
-            "$ref": "AAAAAAFFDNvnyoh5t7GC002="
+            "$ref": "AAAAAAFFlQ9R9egtnQWU002="
           },
           "attributes": [
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFM2DiAgoPP/EM099=",
+              "_id": "AAAAAAFFeBKmZTrDAI7T127=",
               "name": "id",
               "visibility": "private",
               "type": "String",
@@ -1409,12 +1786,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFuqYwkEXTtknZ100=",
+              "_id": "AAAAAAFFlEG7yfkeh8uX128=",
               "name": "bbBooks",
               "visibility": "private",
               "type": "LibraryBookId",
@@ -1422,12 +1799,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFT5bisodAFDSy101=",
+              "_id": "AAAAAAFFumphtespAw9d129=",
               "name": "ccBooks",
               "visibility": "private",
               "type": "HashSet<LibraryBookId>",
@@ -1435,12 +1812,12 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               }
             },
             {
               "_type": "UMLAttribute",
-              "_id": "AAAAAAFFp8d4dJWYEZ/7102=",
+              "_id": "AAAAAAFFJeZ0B9kIiQFv130=",
               "name": "isOrdering",
               "visibility": "private",
               "type": "boolean",
@@ -1448,87 +1825,100 @@
               "isFinal": false,
               "isReadOnly": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
+              }
+            },
+            {
+              "_type": "UMLAttribute",
+              "_id": "AAAAAAFFJHpPIvcVrg4w131=",
+              "name": "isReading",
+              "visibility": "private",
+              "type": "boolean",
+              "isStatic": false,
+              "isFinal": false,
+              "isReadOnly": false,
+              "_parent": {
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               }
             }
           ],
           "operations": [
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFigpCqnxsRDyr103=",
+              "_id": "AAAAAAFF1n8kKWgIC1TR132=",
               "name": "User",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               },
               "stereotype": "constructor",
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFRWdlIx9BF013104=",
+                  "_id": "AAAAAAFFR8Fqy+OK/WvK133=",
                   "name": "id",
                   "type": "String",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFigpCqnxsRDyr103="
+                    "$ref": "AAAAAAFF1n8kKWgIC1TR132="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFal2mip4B9JPK105=",
+              "_id": "AAAAAAFFwq0bKCTYw4aW134=",
               "name": "addBook",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFDD5h1P4hbqyG106=",
+                  "_id": "AAAAAAFF0pvMZ+z9Osuz135=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFal2mip4B9JPK105="
+                    "$ref": "AAAAAAFFwq0bKCTYw4aW134="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFC7ESk/OY2DHi107=",
+              "_id": "AAAAAAFFv3VakjhUbHYk136=",
               "name": "removeBook",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFwo3tchCYw8Af108=",
+                  "_id": "AAAAAAFFEiBhuyPqbabK137=",
                   "name": "bookId",
                   "type": "LibraryBookId",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFC7ESk/OY2DHi107="
+                    "$ref": "AAAAAAFFv3VakjhUbHYk136="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFLWjB9HxbMwcs109=",
+              "_id": "AAAAAAFFlCnvjXLn41dz138=",
               "name": "hasBTypeBook",
               "visibility": "public",
               "isStatic": false,
@@ -1536,12 +1926,12 @@
               "isFinal": false,
               "type": "boolean",
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFF/C1kKIi+NS3R110=",
+              "_id": "AAAAAAFFArUP+RuKI5HY139=",
               "name": "hasCTypeIsbnBook",
               "visibility": "public",
               "isStatic": false,
@@ -1549,24 +1939,24 @@
               "isFinal": false,
               "type": "boolean",
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFEkKksOnNu+fP111=",
+                  "_id": "AAAAAAFFZaHmV39uC6Nd140=",
                   "name": "bookIsbn",
                   "type": "LibraryBookIsbn",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFF/C1kKIi+NS3R110="
+                    "$ref": "AAAAAAFFArUP+RuKI5HY139="
                   }
                 }
               ]
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFmoE2VHQpN7Yp112=",
+              "_id": "AAAAAAFFElgxVbR11Spg141=",
               "name": "isOrdering",
               "visibility": "public",
               "isStatic": false,
@@ -1574,29 +1964,66 @@
               "isFinal": false,
               "type": "boolean",
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               }
             },
             {
               "_type": "UMLOperation",
-              "_id": "AAAAAAFFGl915mPMCZf+113=",
+              "_id": "AAAAAAFFfwL2NQH9L5+f142=",
+              "name": "isReading",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "type": "boolean",
+              "_parent": {
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
+              }
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFNjhnz3GZE6YT143=",
               "name": "setOrdering",
               "visibility": "public",
               "isStatic": false,
               "isAbstract": false,
               "isFinal": false,
               "_parent": {
-                "$ref": "AAAAAAFFOtzR9/de1FzD098="
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
               },
               "parameters": [
                 {
                   "_type": "UMLParameter",
-                  "_id": "AAAAAAFFwuqioTXhvWrR114=",
+                  "_id": "AAAAAAFFeYugonwHhYQ8144=",
                   "name": "isOrdering",
                   "type": "boolean",
                   "direction": "in",
                   "_parent": {
-                    "$ref": "AAAAAAFFGl915mPMCZf+113="
+                    "$ref": "AAAAAAFFNjhnz3GZE6YT143="
+                  }
+                }
+              ]
+            },
+            {
+              "_type": "UMLOperation",
+              "_id": "AAAAAAFFugRd7tDwkfB5145=",
+              "name": "setReading",
+              "visibility": "public",
+              "isStatic": false,
+              "isAbstract": false,
+              "isFinal": false,
+              "_parent": {
+                "$ref": "AAAAAAFFK8TbjgKwKQsm126="
+              },
+              "parameters": [
+                {
+                  "_type": "UMLParameter",
+                  "_id": "AAAAAAFFqFiWj3m4YZIn146=",
+                  "name": "isReading",
+                  "type": "boolean",
+                  "direction": "in",
+                  "_parent": {
+                    "$ref": "AAAAAAFFugRd7tDwkfB5145="
                   }
                 }
               ]
@@ -1605,7 +2032,7 @@
         }
       ],
       "_parent": {
-        "$ref": "AAAAAAFFyaFPjLXlIRsa001="
+        "$ref": "AAAAAAFFgucQHat0G/7o001="
       }
     }
   ]

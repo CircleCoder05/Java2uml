@@ -16,6 +16,64 @@ from java2plantuml.javavariable import JavaField
 from .model_builder import ModelBuilder
 from .id_generator import reset_generator
 
+# extends/implements 中出现的 JDK/标准库名：不建占位类，避免污染模型
+_EXTERNAL_JAVA_SKIP: frozenset[str] = frozenset(
+    {
+        "void",
+        "int",
+        "long",
+        "short",
+        "byte",
+        "char",
+        "float",
+        "double",
+        "boolean",
+        "String",
+        "Object",
+        "Class",
+        "Void",
+        "Enum",
+        "Record",
+        "Integer",
+        "Long",
+        "Short",
+        "Byte",
+        "Double",
+        "Boolean",
+        "Character",
+        "Number",
+        "Throwable",
+        "Error",
+        "RuntimeException",
+        "Exception",
+        "Cloneable",
+        "Serializable",
+        "Comparable",
+        "Iterable",
+        "Iterator",
+        "CharSequence",
+        "AutoCloseable",
+        "List",
+        "Set",
+        "Map",
+        "Collection",
+        "Queue",
+        "Deque",
+        "Stack",
+        "Vector",
+        "Optional",
+        "Stream",
+        "BigDecimal",
+        "BigInteger",
+        "Instant",
+        "LocalDate",
+        "LocalTime",
+        "LocalDateTime",
+        "Date",
+        "Calendar",
+    }
+)
+
 
 class StarUMLExporter:
     """将 Java 分析结果导出为 StarUML MDJ 格式."""
@@ -63,6 +121,10 @@ class StarUMLExporter:
         # 第一步：创建所有类和包结构
         for package_name, package in inner_analyzer.packages.items():
             self._process_package(package_name, package, model_id)
+
+        # 为 extends / implements 中未出现在工程里的类型建占位类（如 Thread），
+        # 以便生成 UMLGeneralization / UMLInterfaceRealization 连线。
+        self._ensure_external_placeholder_types(inner_analyzer, model_id)
 
         # 第二步：处理继承和实现关系
         self._process_inheritance_and_realization(inner_analyzer)
@@ -330,6 +392,8 @@ class StarUMLExporter:
                 if not class_element:
                     continue
 
+                class_element.setdefault("ownedElements", [])
+
                 # 处理继承（extends）
                 if hasattr(class_obj, "extends") and class_obj.extends:
                     extends = class_obj.extends
@@ -373,6 +437,8 @@ class StarUMLExporter:
                 if not class_element:
                     continue
 
+                class_element.setdefault("ownedElements", [])
+
                 # 处理关联关系（字段类型）
                 if hasattr(class_obj, "relations") and class_obj.relations:
                     for relation_target in class_obj.relations:
@@ -413,6 +479,64 @@ class StarUMLExporter:
                             )
                             class_element["ownedElements"].append(dep)
 
+    @staticmethod
+    def _basename_java_type(type_ref: str) -> str:
+        """Java 类型串取简单名（去泛型、数组，取最后一段包名）."""
+        t = (type_ref or "").strip()
+        if not t:
+            return ""
+        if "<" in t:
+            t = t.split("<", 1)[0].strip()
+        t = t.replace("[]", "").strip()
+        if "." in t:
+            return t.rsplit(".", 1)[-1]
+        return t
+
+    def _known_local_classifier_names(self, analyzer: JavaAnalyzer) -> set[str]:
+        names: set[str] = set()
+        for pkg in analyzer.packages.values():
+            names.update(pkg.classes.keys())
+        return names
+
+    def _extends_implements_basenames(self, analyzer: JavaAnalyzer) -> set[str]:
+        """收集源码里 extends / implements 引用的类型简单名."""
+        out: set[str] = set()
+        for pkg in analyzer.packages.values():
+            for co in pkg.classes.values():
+                if hasattr(co, "extends") and co.extends:
+                    ext = co.extends
+                    items = [ext] if isinstance(ext, str) else ext
+                    for item in items:
+                        b = self._basename_java_type(str(item))
+                        if b:
+                            out.add(b)
+                if hasattr(co, "implements") and co.implements:
+                    for item in co.implements:
+                        b = self._basename_java_type(str(item))
+                        if b:
+                            out.add(b)
+        return out
+
+    def _ensure_external_placeholder_types(self, analyzer: JavaAnalyzer, model_id: str) -> None:
+        """为工程外类型（如 Thread）建最小 UMLClass，便于继承/实现连线."""
+        needed = self._extends_implements_basenames(analyzer)
+        known = self._known_local_classifier_names(analyzer)
+        for base in sorted(needed):
+            if base in known or base in _EXTERNAL_JAVA_SKIP:
+                continue
+            if base in self.class_id_map:
+                continue
+            cid, elem = self.builder.create_class(
+                name=base,
+                attributes=None,
+                operations=None,
+                parent_id=model_id,
+                is_interface=False,
+                is_abstract=False,
+            )
+            self.class_id_map[base] = cid
+            self.model_classes.append(elem)
+
     def _find_class_id(
         self,
         class_name: str,
@@ -420,22 +544,28 @@ class StarUMLExporter:
         analyzer: JavaAnalyzer,
     ) -> str | None:
         """查找类的 ID，支持多种引用方式."""
-        # 1. 尝试直接查找（简单名称或全名）
-        if class_name in self.class_id_map:
-            return self.class_id_map[class_name]
+        raw = (class_name or "").strip()
+        simple = self._basename_java_type(raw)
+        names_to_try: list[str] = []
+        for x in (raw, simple):
+            if x and x not in names_to_try:
+                names_to_try.append(x)
 
-        # 2. 在当前包中查找
-        full_name = f"{current_package}.{class_name}"
-        if full_name in self.class_id_map:
-            return self.class_id_map[full_name]
+        for name in names_to_try:
+            if name in self.class_id_map:
+                return self.class_id_map[name]
 
-        # 3. 在所有包中查找
+            full_name = f"{current_package}.{name}"
+            if full_name in self.class_id_map:
+                return self.class_id_map[full_name]
+
         for pkg_name, pkg in analyzer.packages.items():
-            test_full_name = f"{pkg_name}.{class_name}"
-            if test_full_name in self.class_id_map:
-                return self.class_id_map[test_full_name]
-            if class_name in pkg.classes:
-                return self.class_id_map.get(class_name)
+            for name in names_to_try:
+                test_full_name = f"{pkg_name}.{name}"
+                if test_full_name in self.class_id_map:
+                    return self.class_id_map[test_full_name]
+                if name in pkg.classes:
+                    return self.class_id_map.get(name)
 
         return None
 
