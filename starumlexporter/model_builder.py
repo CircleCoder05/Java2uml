@@ -99,10 +99,11 @@ class ModelBuilder:
         visibility: str = "private",
         is_static: bool = False,
         is_final: bool = False,
+        parent_id: str | None = None,
     ) -> dict:
         """创建 UMLAttribute 元素."""
         attr_id = generate_id()
-        return {
+        attr: dict[str, Any] = {
             "_type": "UMLAttribute",
             "_id": attr_id,
             "name": name,
@@ -112,6 +113,9 @@ class ModelBuilder:
             "isFinal": is_final,
             "isReadOnly": is_final,
         }
+        if parent_id:
+            attr["_parent"] = {"$ref": parent_id}
+        return attr
 
     def create_operation(
         self,
@@ -121,6 +125,7 @@ class ModelBuilder:
         visibility: str = "public",
         is_static: bool = False,
         is_abstract: bool = False,
+        parent_id: str | None = None,
     ) -> dict:
         """创建 UMLOperation 元素."""
         op_id = generate_id()
@@ -140,6 +145,9 @@ class ModelBuilder:
         if parameters:
             operation["parameters"] = parameters
 
+        if parent_id:
+            operation["_parent"] = {"$ref": parent_id}
+
         return operation
 
     def create_parameter(
@@ -147,16 +155,20 @@ class ModelBuilder:
         name: str,
         type_str: str,
         direction: str = "in",
+        parent_id: str | None = None,
     ) -> dict:
         """创建 UMLParameter 元素."""
         param_id = generate_id()
-        return {
+        param: dict[str, Any] = {
             "_type": "UMLParameter",
             "_id": param_id,
             "name": name,
             "type": type_str,
             "direction": direction,
         }
+        if parent_id:
+            param["_parent"] = {"$ref": parent_id}
+        return param
 
     def create_generalization(
         self,
@@ -201,21 +213,29 @@ class ModelBuilder:
         name: str = "",
         parent_id: str | None = None,
     ) -> dict:
-        """创建 UMLAssociation（关联关系）元素."""
+        """创建 UMLAssociation（关联关系）元素.
+
+        StarUML 要求 UMLAssociationEnd 的 _parent 指向所属 UMLAssociation，
+        否则模型不完整，类往往无法拖到画布上。
+        """
         assoc_id = generate_id()
+        end1_id = generate_id()
+        end2_id = generate_id()
         assoc: dict[str, Any] = {
             "_type": "UMLAssociation",
             "_id": assoc_id,
             "name": name,
             "end1": {
                 "_type": "UMLAssociationEnd",
-                "_id": generate_id(),
+                "_id": end1_id,
+                "_parent": {"$ref": assoc_id},
                 "reference": {"$ref": source_id},
                 "multiplicity": "1",
             },
             "end2": {
                 "_type": "UMLAssociationEnd",
-                "_id": generate_id(),
+                "_id": end2_id,
+                "_parent": {"$ref": assoc_id},
                 "reference": {"$ref": target_id},
                 "multiplicity": "1",
             },

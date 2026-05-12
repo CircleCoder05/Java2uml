@@ -70,11 +70,16 @@ class StarUMLExporter:
         # 第三步：处理关联和依赖关系
         self._process_associations_and_dependencies(inner_analyzer)
 
-        # 将类和关系添加到模型
-        model["ownedElements"].extend(self.model_classes)
-        model["ownedElements"].extend(self.model_relations)
+        # 去掉空的 ownedElements（与 StarUML 原生导出一致，避免空数组引发校验问题）
+        for cls in self.model_classes:
+            owned = cls.get("ownedElements")
+            if isinstance(owned, list) and len(owned) == 0:
+                del cls["ownedElements"]
 
-        # 验证：确保所有 ownedElements 都有 _parent 指向 model
+        # 将类添加到模型（关系现在放在类的 ownedElements 里）
+        model["ownedElements"].extend(self.model_classes)
+
+        # 验证：确保所有直接子元素都有 _parent 指向 model
         for element in model["ownedElements"]:
             if "_parent" not in element:
                 element["_parent"] = {"$ref": model_id}
@@ -144,12 +149,29 @@ class StarUMLExporter:
         is_interface = isinstance(class_obj, JavaInterface)
         is_enum = isinstance(class_obj, JavaEnum)
 
-        # 处理属性
+        # 先创建类（不带属性和方法，后面再添加）
+        class_id, class_element = self.builder.create_class(
+            name=class_obj.name,
+            attributes=None,
+            operations=None,
+            is_abstract="abstract" in getattr(class_obj, "modifiers", []),
+            is_interface=is_interface,
+            parent_id=parent_id,
+            visibility=self._get_visibility_from_modifiers(
+                getattr(class_obj, "modifiers", [])
+            ),
+        )
+
+        # 记录类 ID 映射
+        self.class_id_map[full_class_name] = class_id
+        self.class_id_map[class_obj.name] = class_id
+
+        # 现在用 class_id 作为 parent 创建属性和方法
         attributes: list[dict] = []
         if not is_interface and hasattr(class_obj, "fields"):
             for field in class_obj.fields:
                 if isinstance(field, JavaField):
-                    attr = self._convert_field_to_attribute(field)
+                    attr = self._convert_field_to_attribute(field, class_id)
                     attributes.append(attr)
 
         # 枚举常量作为属性
@@ -161,6 +183,7 @@ class StarUMLExporter:
                     visibility="public",
                     is_static=True,
                     is_final=True,
+                    parent_id=class_id,
                 )
                 attributes.append(attr)
 
@@ -171,37 +194,28 @@ class StarUMLExporter:
         if hasattr(class_obj, "constructors"):
             for constructor in class_obj.constructors:
                 if isinstance(constructor, JavaConstructor):
-                    op = self._convert_constructor_to_operation(constructor)
+                    op = self._convert_constructor_to_operation(constructor, class_id)
                     operations.append(op)
 
         # 普通方法
         if hasattr(class_obj, "methods"):
             for method in class_obj.methods:
                 if isinstance(method, JavaMethod):
-                    op = self._convert_method_to_operation(method)
+                    op = self._convert_method_to_operation(method, class_id)
                     operations.append(op)
 
-        # 创建类元素
-        class_id, class_element = self.builder.create_class(
-            name=class_obj.name,
-            attributes=attributes if attributes else None,
-            operations=operations if operations else None,
-            is_abstract="abstract" in getattr(class_obj, "modifiers", []),
-            is_interface=is_interface,
-            parent_id=parent_id,
-            visibility=self._get_visibility_from_modifiers(
-                getattr(class_obj, "modifiers", [])
-            ),
-        )
+        # 添加属性和方法到类元素
+        if attributes:
+            class_element["attributes"] = attributes
+        if operations:
+            class_element["operations"] = operations
 
-        # 记录类 ID 映射
-        self.class_id_map[full_class_name] = class_id
-        # 也记录简单名称映射（用于当前包内引用）
-        self.class_id_map[class_obj.name] = class_id
+        # ownedElements：仅在有关系时写入（空数组部分 StarUML 版本会异常）
+        class_element["ownedElements"] = []
 
         return class_element
 
-    def _convert_field_to_attribute(self, field: JavaField) -> dict:
+    def _convert_field_to_attribute(self, field: JavaField, parent_id: str) -> dict:
         """将 JavaField 转换为 UMLAttribute."""
         visibility = self._get_visibility_from_modifiers(field.modifiers)
         is_static = "static" in field.modifiers
@@ -218,15 +232,28 @@ class StarUMLExporter:
             visibility=visibility,
             is_static=is_static,
             is_final=is_final,
+            parent_id=parent_id,
         )
 
-    def _convert_method_to_operation(self, method: JavaMethod) -> dict:
+    def _convert_method_to_operation(self, method: JavaMethod, parent_id: str) -> dict:
         """将 JavaMethod 转换为 UMLOperation."""
         visibility = self._get_visibility_from_modifiers(method.modifiers)
         is_static = "static" in method.modifiers
         is_abstract = "abstract" in method.modifiers
 
-        # 处理参数
+        # 先创建操作（不带参数）
+        op = self.builder.create_operation(
+            name=method.name,
+            return_type=method.return_type,
+            parameters=None,
+            visibility=visibility,
+            is_static=is_static,
+            is_abstract=is_abstract,
+            parent_id=parent_id,
+        )
+        op_id = op["_id"]
+
+        # 用 op_id 作为 parent 创建参数
         parameters: list[dict] = []
         if hasattr(method, "parameters"):
             for param in method.parameters:
@@ -239,23 +266,34 @@ class StarUMLExporter:
                 param_dict = self.builder.create_parameter(
                     name=param.name,
                     type_str=type_str,
+                    parent_id=op_id,
                 )
                 parameters.append(param_dict)
 
-        return self.builder.create_operation(
-            name=method.name,
-            return_type=method.return_type,
-            parameters=parameters if parameters else None,
-            visibility=visibility,
-            is_static=is_static,
-            is_abstract=is_abstract,
-        )
+        if parameters:
+            op["parameters"] = parameters
 
-    def _convert_constructor_to_operation(self, constructor: JavaConstructor) -> dict:
+        return op
+
+    def _convert_constructor_to_operation(self, constructor: JavaConstructor, parent_id: str) -> dict:
         """将 JavaConstructor 转换为 UMLOperation."""
         visibility = self._get_visibility_from_modifiers(constructor.modifiers)
 
-        # 处理参数
+        # 先创建操作（不带参数）
+        op = self.builder.create_operation(
+            name=constructor.name,
+            return_type="",
+            parameters=None,
+            visibility=visibility,
+            is_static=False,
+            is_abstract=False,
+            parent_id=parent_id,
+        )
+        # 标记为构造函数
+        op["stereotype"] = "constructor"
+        op_id = op["_id"]
+
+        # 用 op_id 作为 parent 创建参数
         parameters: list[dict] = []
         if hasattr(constructor, "parameters"):
             for param in constructor.parameters:
@@ -268,17 +306,14 @@ class StarUMLExporter:
                 param_dict = self.builder.create_parameter(
                     name=param.name,
                     type_str=type_str,
+                    parent_id=op_id,
                 )
                 parameters.append(param_dict)
 
-        return self.builder.create_operation(
-            name=constructor.name,  # 构造函数名与类名相同
-            return_type="",  # 构造函数无返回类型
-            parameters=parameters if parameters else None,
-            visibility=visibility,
-            is_static=False,
-            is_abstract=False,
-        )
+        if parameters:
+            op["parameters"] = parameters
+
+        return op
 
     def _process_inheritance_and_realization(self, analyzer: JavaAnalyzer) -> None:
         """处理继承和实现关系."""
@@ -290,6 +325,11 @@ class StarUMLExporter:
                 if not source_id:
                     continue
 
+                # 获取类元素
+                class_element = self._find_class_element(source_id)
+                if not class_element:
+                    continue
+
                 # 处理继承（extends）
                 if hasattr(class_obj, "extends") and class_obj.extends:
                     extends = class_obj.extends
@@ -299,19 +339,12 @@ class StarUMLExporter:
                     for parent_class in extends:
                         target_id = self._find_class_id(parent_class, package_name, analyzer)
                         if target_id:
-                            if isinstance(class_obj, JavaInterface):
-                                # 接口继承接口
-                                gen = self.builder.create_generalization(
-                                    source_id=source_id,
-                                    target_id=target_id,
-                                )
-                            else:
-                                # 类继承类
-                                gen = self.builder.create_generalization(
-                                    source_id=source_id,
-                                    target_id=target_id,
-                                )
-                            self.model_relations.append(gen)
+                            gen = self.builder.create_generalization(
+                                source_id=source_id,
+                                target_id=target_id,
+                                parent_id=source_id,
+                            )
+                            class_element["ownedElements"].append(gen)
 
                 # 处理实现（implements）
                 if hasattr(class_obj, "implements") and class_obj.implements:
@@ -321,8 +354,9 @@ class StarUMLExporter:
                             realization = self.builder.create_interface_realization(
                                 source_id=source_id,
                                 target_id=target_id,
+                                parent_id=source_id,
                             )
-                            self.model_relations.append(realization)
+                            class_element["ownedElements"].append(realization)
 
     def _process_associations_and_dependencies(self, analyzer: JavaAnalyzer) -> None:
         """处理关联和依赖关系."""
@@ -334,6 +368,11 @@ class StarUMLExporter:
                 if not source_id:
                     continue
 
+                # 获取类元素
+                class_element = self._find_class_element(source_id)
+                if not class_element:
+                    continue
+
                 # 处理关联关系（字段类型）
                 if hasattr(class_obj, "relations") and class_obj.relations:
                     for relation_target in class_obj.relations:
@@ -342,8 +381,9 @@ class StarUMLExporter:
                             assoc = self.builder.create_association(
                                 source_id=source_id,
                                 target_id=target_id,
+                                parent_id=source_id,
                             )
-                            self.model_relations.append(assoc)
+                            class_element["ownedElements"].append(assoc)
 
                 # 处理依赖关系（从方法/构造函数中解析）
                 dependencies = set()
@@ -365,12 +405,13 @@ class StarUMLExporter:
                     target_id = self._find_class_id(dep_target, package_name, analyzer)
                     if target_id and target_id != source_id:
                         # 检查是否已经是关联关系
-                        if not self._has_association(source_id, target_id):
+                        if not self._has_association_in_class(class_element, source_id, target_id):
                             dep = self.builder.create_dependency(
                                 source_id=source_id,
                                 target_id=target_id,
+                                parent_id=source_id,
                             )
-                            self.model_relations.append(dep)
+                            class_element["ownedElements"].append(dep)
 
     def _find_class_id(
         self,
@@ -398,18 +439,33 @@ class StarUMLExporter:
 
         return None
 
-    def _has_association(self, source_id: str, target_id: str) -> bool:
-        """检查是否已存在两个类之间的关联关系."""
-        for relation in self.model_relations:
-            if relation["_type"] == "UMLAssociation":
-                end1 = relation.get("end1", {})
-                end2 = relation.get("end2", {})
+    def _find_class_element(self, class_id: str) -> dict | None:
+        """根据类 ID 查找类元素."""
+        for element in self.model_classes:
+            if element["_id"] == class_id:
+                return element
+        return None
+
+    def _has_association_in_class(self, class_element: dict, source_id: str, target_id: str) -> bool:
+        """检查类的 ownedElements 中是否已存在关联关系."""
+        for element in class_element.get("ownedElements", []):
+            if element["_type"] == "UMLAssociation":
+                end1 = element.get("end1", {})
+                end2 = element.get("end2", {})
                 ref1 = end1.get("reference", {}).get("$ref", "")
                 ref2 = end2.get("reference", {}).get("$ref", "")
 
                 if (ref1 == source_id and ref2 == target_id) or \
                    (ref1 == target_id and ref2 == source_id):
                     return True
+        return False
+
+    def _has_association(self, source_id: str, target_id: str) -> bool:
+        """检查是否已存在两个类之间的关联关系（全局）."""
+        # 检查所有类的 ownedElements
+        for class_element in self.model_classes:
+            if self._has_association_in_class(class_element, source_id, target_id):
+                return True
         return False
 
     def _get_visibility_from_modifiers(self, modifiers: set[str] | list[str]) -> str:
