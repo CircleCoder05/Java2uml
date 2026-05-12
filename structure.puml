@@ -1,0 +1,21 @@
+@startuml Java2PlantUMLTool
+package "文件入口层" {
+  class JavaAnalyzer
+}
+package "包管理层" {
+  class JavaPackage
+}
+package "类管理层" {
+  abstract BaseJavaClass
+  class JavaClass
+  class JavaInterface
+  class JavaEnum
+}
+JavaAnalyzer -> JavaPackage : 解析调用
+JavaPackage *- BaseJavaClass : 包含类
+BaseJavaClass <|-- JavaClass
+BaseJavaClass <|-- JavaInterface
+BaseJavaClass <|-- JavaEnum
+note right of JavaClass : 管理上下文(JavaClassContext)
+
+@enduml

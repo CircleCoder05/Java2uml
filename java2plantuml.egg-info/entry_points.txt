@@ -1,0 +1,2 @@
+[console_scripts]
+java2plantuml = java2plantuml.cli:main

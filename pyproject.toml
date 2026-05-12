@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "java2plantuml"
+version = "0.1.0"
+description = "Parse Java source and generate PlantUML class diagrams"
+readme = "readme.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "java2plantuml contributors" }]
+dependencies = [
+    "javalang>=0.13.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/example/java2plantuml"
+
+[project.scripts]
+java2plantuml = "java2plantuml.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["java2plantuml*"]
