@@ -3,23 +3,25 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "java2plantuml"
-version = "0.1.0"
-description = "Parse Java source and generate PlantUML class diagrams"
+name = "java2uml"
+version = "0.2.0"
+description = "Parse Java sources: PlantUML class diagrams and StarUML (.mdj) export"
 readme = "readme.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "java2plantuml contributors" }]
+authors = [{ name = "java2uml contributors" }]
 dependencies = [
     "javalang>=0.13.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/example/java2plantuml"
+Homepage = "https://github.com/example/java2uml"
 
 [project.scripts]
+java2uml = "java2uml.cli:main"
 java2plantuml = "java2plantuml.cli:main"
+java2staruml = "java2staruml.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["java2plantuml*"]
+include = ["java2uml*", "java2plantuml*", "java2staruml*"]

@@ -1,3 +1,14 @@
+Metadata-Version: 2.4
+Name: java2uml
+Version: 0.2.0
+Summary: Parse Java sources: PlantUML class diagrams and StarUML (.mdj) export
+Author: java2uml contributors
+License: MIT
+Project-URL: Homepage, https://github.com/example/java2uml
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: javalang>=0.13.0
+
 # java2uml
 
 将 Java 源码解析为 **PlantUML** 类图文本，并可选导出 **StarUML** `.mdj` 模型（依赖 [javalang](https://github.com/c2nes/javalang) 做语法解析）。安装后提供统一命令 **`java2uml`**（用 `-f` 选择输出格式），并保留 **`java2plantuml`** / **`java2staruml`** 作为兼容入口。

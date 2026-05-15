@@ -1,6 +1,8 @@
-# StarUML Exporter for java2plantuml
+# java2staruml
 
-将 Java 源代码分析结果导出为 StarUML (.mdj) 格式的工具。
+将 Java 源代码分析结果导出为 StarUML (.mdj) 格式的工具（与 **java2plantuml** 同属本仓库）。
+
+**推荐命令行：**统一入口 **`java2uml <路径> -f mdj [-o 输出.mdj]`**（见仓库根目录 `readme.md`）。仍可使用 **`java2staruml`** 或 **`python -m java2staruml`**，二者调用同一实现。
 
 ## 功能特性
 
@@ -16,9 +18,9 @@
 ## 项目结构
 
 ```
-starumlexporter/
+java2staruml/
 ├── __init__.py          # 包入口，导出 StarUMLExporter 类
-├── __main__.py          # 模块入口，支持 python -m starumlexporter
+├── __main__.py          # 模块入口，支持 python -m java2staruml
 ├── cli.py               # 命令行接口
 ├── id_generator.py      # StarUML 风格 ID 生成器
 ├── model_builder.py     # StarUML 模型元素构建器
@@ -32,20 +34,20 @@ starumlexporter/
 
 ```bash
 # 分析单个 Java 文件
-python -m starumlexporter path/to/MyClass.java output.mdj
+python -m java2staruml path/to/MyClass.java output.mdj
 
 # 分析整个目录
-python -m starumlexporter path/to/project/src/ output.mdj
+python -m java2staruml path/to/project/src/ output.mdj
 
 # 或者直接运行 CLI
-python starumlexporter/cli.py path/to/src/ output.mdj
+python java2staruml/cli.py path/to/src/ output.mdj
 ```
 
 ### 方式二：代码中调用
 
 ```python
 from java2plantuml import JavaProjectAnalyzer
-from starumlexporter import StarUMLExporter
+from java2staruml import StarUMLExporter
 
 # 1. 分析 Java 项目
 analyzer = JavaProjectAnalyzer()
@@ -64,7 +66,7 @@ print(json_str)
 ### 方式三：获取 JSON 字典
 
 ```python
-from starumlexporter import StarUMLExporter
+from java2staruml import StarUMLExporter
 
 exporter = StarUMLExporter()
 project_dict = exporter.export(analyzer, "My Project")

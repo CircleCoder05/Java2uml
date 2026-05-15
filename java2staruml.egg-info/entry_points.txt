@@ -1,0 +1,3 @@
+[console_scripts]
+java2plantuml = java2plantuml.cli:main
+java2staruml = java2staruml.cli:main

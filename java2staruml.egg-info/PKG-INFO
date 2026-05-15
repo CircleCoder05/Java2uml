@@ -1,8 +1,17 @@
-# java2uml
+Metadata-Version: 2.4
+Name: java2staruml
+Version: 0.1.0
+Summary: Parse Java sources: PlantUML class diagrams and StarUML (.mdj) export
+Author: java2staruml contributors
+License: MIT
+Project-URL: Homepage, https://github.com/example/java2staruml
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: javalang>=0.13.0
 
-将 Java 源码解析为 **PlantUML** 类图文本，并可选导出 **StarUML** `.mdj` 模型（依赖 [javalang](https://github.com/c2nes/javalang) 做语法解析）。安装后提供统一命令 **`java2uml`**（用 `-f` 选择输出格式），并保留 **`java2plantuml`** / **`java2staruml`** 作为兼容入口。
+# java2staruml
 
-**快速上手：**见 [QUICKSTART.md](QUICKSTART.md)。
+将 Java 源码解析为 **PlantUML** 类图文本，并可选导出 **StarUML** `.mdj` 模型（依赖 [javalang](https://github.com/c2nes/javalang) 做语法解析）。安装后提供命令 `java2plantuml` 与 `java2staruml`。
 
 ## 环境要求
 
@@ -24,33 +33,30 @@ pip install -e .
 ### 从打好的 wheel 安装
 
 ```cmd
-pip install dist\java2uml-0.2.0-py3-none-any.whl
+pip install dist\java2staruml-0.1.0-py3-none-any.whl
 ```
 
 （若你修改了版本号，请把文件名换成 `dist` 目录里实际的 `.whl` 名称。）
 
 ## 使用
 
-### 统一命令 `java2uml`
+### 命令行
 
-```cmd
-java2uml <路径> -f plantuml [-o diagram.puml]
-java2uml <路径> -f mdj [-o model.mdj] [-v]
-```
-
-- **`-f plantuml`**（默认）：输出 PlantUML（含 `@startuml` / `@enduml`）。省略 **`-o`** 时打印到标准输出。
-- **`-f mdj`** 或 **`-f staruml`**：生成 StarUML `.mdj`。省略 **`-o`** 时写入当前目录下的 **`output.mdj`**。**`-v`** 会打印每个 `.java` 的解析结果（与旧版 `java2staruml` 行为一致）。
-
-### 兼容命令（等价调用）
+安装后可直接使用入口命令（输出完整 PlantUML，含 `@startuml` / `@enduml`）：
 
 ```cmd
 java2plantuml <路径>
+```
+
+`<路径>` 可以是**单个 `.java` 文件**，或**包含多个 `.java` 的目录**（会递归扫描）。
+
+### StarUML（.mdj）
+
+```cmd
 java2staruml <路径> [输出.mdj]
 ```
 
-### StarUML（.mdj）说明
-
-详见 `java2staruml/README.md`（模型层；画布内需自行建类图并拖拽类，或「Add All Classes」）。
+详见 `java2staruml/README.md`。
 
 ### 在代码中调用
 
@@ -98,11 +104,11 @@ print(proj.relations_plantuml)
 4. **本地验证安装**（可选）：
 
    ```cmd
-   pip install dist\java2uml-0.2.0-py3-none-any.whl
-   java2uml C:\some\java\folder -f plantuml
+   pip install dist\java2staruml-0.1.0-py3-none-any.whl
+   java2plantuml C:\some\java\folder
    ```
 
-   使用 `java2uml --help` 查看全部选项；`java2plantuml` / `java2staruml` 仍为兼容入口。
+   CLI 需传入**恰好一个**参数（文件或目录路径）；参数不对时会打印用法说明。
 
 ## 功能与限制
 
