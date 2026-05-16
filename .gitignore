@@ -11,3 +11,4 @@ javacode/
 venv/
 *.code-workspace
 interpreter/
+__pycache__/
