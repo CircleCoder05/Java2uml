@@ -1,258 +1,29 @@
 # java2uml
 
-将 Java 源码解析为 **PlantUML** 类图文本，并可选导出 **StarUML** `.mdj` 模型（依赖 [javalang](https://github.com/c2nes/javalang) 做语法解析）。安装后提供统一命令 **`java2uml`**（用 `-f` 选择输出格式），并保留 **`java2plantuml`** / **`java2staruml`** 作为兼容入口。
+从 **`.java` 源码**（不解析字节码）生成 **PlantUML** 类图文本，或导出可在 **StarUML** 中打开的 **`.mdj`** 模型。解析基于 [javalang](https://github.com/c2nes/javalang)。
 
-**快速上手：**见 [QUICKSTART.md](QUICKSTART.md)。
-
-## 环境要求
-
-- **Python：3.11 及以上**（含 **3.12**、更新版本）。`pyproject.toml` 中为 `requires-python = ">=3.11"`，3.12 在支持范围内，与本项目所用语法及依赖无已知冲突。
-- 仅需解析 **`.java` 源码**，不解析 `.class` 字节码。
+**环境：** Python 3.11 及以上。
 
 ## 安装
 
-### 从源码目录安装（开发推荐）
-
-在项目根目录（含 `pyproject.toml`）执行：
-
-```cmd
-pip install -e .
+```bash
+pip install java2uml
 ```
-
-会安装本包，并自动安装依赖（如 `javalang`）。
-
-### 从打好的 wheel 安装
-
-```cmd
-pip install dist\java2uml-0.2.0-py3-none-any.whl
-```
-
-（若你修改了版本号，请把文件名换成 `dist` 目录里实际的 `.whl` 名称。）
 
 ## 使用
 
-### 统一命令 `java2uml`
-
-```cmd
-java2uml <路径> -f plantuml [-o diagram.puml]
-java2uml <路径> -f mdj [-o model.mdj] [-v]
+```bash
+java2uml <路径> -f plantuml              # 默认；结果打到标准输出
+java2uml <路径> -f plantuml -o out.puml   # 写入文件
+java2uml <路径> -f mdj -o model.mdj       # StarUML；不写 -o 时默认为 output.mdj
+java2uml <路径> -f mdj -v                 # -v：逐个文件打印解析情况
+java2uml --help
 ```
 
-- **`-f plantuml`**（默认）：输出 PlantUML（含 `@startuml` / `@enduml`）。省略 **`-o`** 时打印到标准输出。
-- **`-f mdj`** 或 **`-f staruml`**：生成 StarUML `.mdj`。省略 **`-o`** 时写入当前目录下的 **`output.mdj`**。**`-v`** 会打印每个 `.java` 的解析结果（与旧版 `java2staruml` 行为一致）。
+`<路径>` 为单个 `.java` 文件或目录（递归扫描）。`-f staruml` 与 `-f mdj` 相同。
 
-### 兼容命令（等价调用）
+兼容旧命令：`java2plantuml`、`java2staruml`（仍由本包提供）。
 
-```cmd
-java2plantuml <路径>
-java2staruml <路径> [输出.mdj]
-```
+## 说明
 
-### StarUML（.mdj）说明
-
-详见 `java2staruml/README.md`（模型层；画布内需自行建类图并拖拽类，或「Add All Classes」）。
-
-### 在代码中调用
-
-```python
-from java2plantuml import JavaAnalyzer, JavaProjectAnalyZer, JavaProjectAnalyzer
-
-# 方式一：自行遍历文件
-analyzer = JavaAnalyzer()
-analyzer.analyze_file(r"C:\path\to\Some.java")
-analyzer.analyze_relations()
-print(analyzer.pakcages_plantuml)   # 类声明片段
-print(analyzer.relations_plantuml)  # 关系（需先 analyze_relations）
-
-# 方式二：分析整个目录
-proj = JavaProjectAnalyZer()  # JavaProjectAnalyzer 为同一类的推荐拼写别名
-proj.analyze_directory(r"C:\path\to\java\sources")
-proj.analyze_relations()
-print(proj.pakcages_plantuml)
-print(proj.relations_plantuml)
-```
-
-说明：`pakcages_plantuml` 为历史拼写，与类图里的 `packages` 同义。
-
-## 打包发布（生成 wheel / sdist）
-
-在**项目根目录**执行：
-
-1. **安装构建工具**（仅需一次，或每次新环境装一次）：
-
-   ```cmd
-   pip install build
-   ```
-
-2. **生成发行包**（在根目录生成 `dist\`）：
-
-   ```cmd
-   python -m build
-   ```
-
-3. 完成后在 `dist\` 中会得到：
-
-   - `*.whl`：可直接 `pip install` 的轮子包；
-   - `*.tar.gz`：源码发行包（sdist）。
-
-4. **本地验证安装**（可选）：
-
-   ```cmd
-   pip install dist\java2uml-0.2.0-py3-none-any.whl
-   java2uml C:\some\java\folder -f plantuml
-   ```
-
-   使用 `java2uml --help` 查看全部选项；`java2plantuml` / `java2staruml` 仍为兼容入口。
-
-## 功能与限制
-
-- 支持多文件、简单 package / class / interface / enum / method / field。
-- 未来计划：更完善的内部类（inner class）等。
-
-## 内部结构（PlantUML）
-
-```puml
-@startuml
-
-' 基本类结构
-class BaseJavaClass {
-    # name: str
-    # modifiers: set[str]
-    # fields: list[JavaField]
-    # constructors: list[JavaConstructor]
-    # methods: list[JavaMethod]
-    # extends: str | list[str]
-    # implements: list[str]
-    # relations: list[str]
-    + __init__(declaration: ClassDeclaration, context: JavaClassContext)
-    + _parse_fields()
-    + _parse_constructors()
-    + _parse_methods()
-    + parse_relationships()
-}
-
-class JavaClass {
-    + __str__()
-}
-JavaClass --|> BaseJavaClass
-
-class JavaInterface {
-    + __str__()
-}
-JavaInterface --|> BaseJavaClass
-
-class JavaEnum {
-    - constants: list[str]
-    + __str__()
-}
-JavaEnum --|> BaseJavaClass
-
-' 辅助工具类
-class Java2PlantUMLTool {
-    {static} _VISIT_MODIFIERS_SYMBOL: dict
-    {static} _OTHER_MODIFIERS_SYMBOL: dict
-    {static} print_modifiers(modifiers: set[str] | str)
-}
-
-enum UMLRelationship {
-    INNER = "-+"
-    DEPEND = ".>"
-    ASSOCIATE = "->"
-    IMPLEMENT = ".|>"
-    EXTEND = "-|>"
-}
-
-' 字段和方法相关
-class JavaField {
-    - name: str
-    - type: str
-    - modifiers: set[str]
-    - documentation: str
-    + __str__()
-    {static} resolve_fields(declaration: FieldDeclaration)
-}
-
-class JavaFormalParameter {
-    - name: str
-    - type: str
-    - varargs: bool
-    + __str__()
-}
-
-class BaseJavaMethod {
-    - name: str
-    - modifiers: set[str]
-    - return_type: str
-    - parameters: list[JavaFormalParameter]
-    + __str__()
-    - _strategy_parse_dependencies(context: JavaClassContext)
-}
-
-class JavaMethod {
-    + parse_dependencies()
-    + __str__()
-}
-JavaMethod --|> BaseJavaMethod
-
-class JavaConstructor {
-    + parse_dependencies()
-    + __str__()
-}
-JavaConstructor --|> BaseJavaMethod
-
-' 包和上下文管理
-class JavaPackage {
-    - name: str
-    - classes: dict[str, JavaClass | JavaInterface | JavaEnum]
-    + parse(declarations: list)
-    + parse_relations()
-}
-
-class JavaClassContext {
-    - class_package_dict: dict[str, str]
-    + get_full_class_path(class_name: str)
-}
-
-' 核心分析器
-class JavaAnalyzer {
-    - __packages: dict[str, JavaPackage]
-    + analyze_file(filepath: str)
-    + analyze_relations()
-    + print_packages()
-}
-
-' 类型处理
-class JavaType {
-    {static} resolve_type(type_node)
-}
-
-' 依赖关系
-JavaAnalyzer -> JavaPackage
-JavaPackage "1" *--> "0..*" JavaClass
-JavaPackage "1" *--> "0..*" JavaInterface
-JavaPackage "1" *--> "0..*" JavaEnum
-
-BaseJavaClass o--> JavaField
-BaseJavaClass o--> JavaMethod
-BaseJavaClass o--> JavaConstructor
-BaseJavaClass o--> JavaClassContext
-
-JavaMethod o--> JavaFormalParameter
-JavaConstructor o--> JavaFormalParameter
-
-JavaMethod ..> JavaType : uses
-JavaField ..> JavaType : uses
-JavaFormalParameter .left.> JavaType : uses
-
-BaseJavaClass .left.> Java2PlantUMLTool : uses
-JavaMethod .up.> Java2PlantUMLTool : uses
-JavaConstructor .up.> Java2PlantUMLTool : uses
-JavaField .up.> Java2PlantUMLTool : uses
-JavaFormalParameter .up.> Java2PlantUMLTool : uses
-
-BaseJavaClass .left.> UMLRelationship : uses
-JavaMethod .> UMLRelationship : uses
-JavaConstructor .> UMLRelationship : uses
-
-@enduml
-```
+支持多文件、包、类 / 接口 / 枚举、字段与方法及常见关系；复杂语法与内部类等可能不完整。`.mdj` 为模型层，在 StarUML 里需自行建图或拖入类。

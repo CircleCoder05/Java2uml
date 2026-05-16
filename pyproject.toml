@@ -15,7 +15,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/example/java2uml"
+Homepage = "https://github.com/CircleCoder05/Java2uml"
+Repository = "https://github.com/CircleCoder05/Java2uml"
 
 [project.scripts]
 java2uml = "java2uml.cli:main"
