@@ -1,0 +1,39 @@
+# Push to branch `release` builds sdist/wheel and uploads to PyPI.
+#
+# PyPI trusted publishing (recommended): register this repo + workflow on PyPI for
+# package `java2uml`. This workflow uses OpenID Connect (no long-lived token in GitHub).
+#
+# If you cannot use OIDC, replace the publish step with:
+#   uses: pypa/gh-action-pypi-publish@release/v1
+#   with:
+#     password: ${{ secrets.PYPI_API_TOKEN }}
+#
+name: Release to PyPI
+
+on:
+  push:
+    branches:
+      - release
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build
+        run: pip install build
+
+      - name: Build sdist and wheel
+        run: python -m build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

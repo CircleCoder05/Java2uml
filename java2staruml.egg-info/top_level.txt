@@ -1,2 +1,0 @@
-java2plantuml
-java2staruml
